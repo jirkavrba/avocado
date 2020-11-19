@@ -1,0 +1,11 @@
+<h1>Sign up</h1>
+
+<%= form_with(model: @user, url: sign_up_url, method: :post) do %>
+  <%= label_tag :username %><br>
+  <%= text_field :user, :username, required: true %><br>
+
+  <%= label_tag :password %><br>
+  <%= password_field :user, :password, required: true %><br>
+
+  <%= submit_tag "Sign up" %>
+<% end %>
