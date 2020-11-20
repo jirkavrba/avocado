@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
   get '/sign_up', to: 'user#new'
   post '/sign_up', to: 'user#create'
+
+  # Collections
+  resources :cards_collections do
+  end
 end
