@@ -1,15 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
-  email: MyString
-  password_digest: MyString
+normal_user:
+  username: normal_user
+  password_digest: "$2a$12$Q1Z3jhVRcEEeiY67sBsHcuLfWBm/t7htp3nEmAVjMUt0TND3Kmai6" # normal_user
   is_admin: false
   is_banned: false
 
-two:
-  username: MyString
-  email: MyString
-  password_digest: MyString
-  is_admin: false
+admin_user:
+  username: admin_user
+  password_digest: "$2a$12$k7mb46mZm08m7RFtPu88Mekoydf7ZI/yFpJAmzhhZM0DrVxxKVpRm" # admin_user
+  is_admin: true
   is_banned: false

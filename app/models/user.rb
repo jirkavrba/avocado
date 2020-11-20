@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   before_validation :downcase_username
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true, format: /[a-zA-Z0-9_-]/
   validates :password, presence: true, length: { minimum: 6 }
 
   private

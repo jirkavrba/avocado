@@ -1,6 +1,6 @@
 class UserController < ApplicationController
 
-  before_action :can_modify?, except: [:new, :create]
+  before_action :can_modify?, except: %i[new create]
 
   def new
     redirect_to dashboard_url if authenticated?

@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
   def new
-    redirect_to root_url if authenticated?
+    redirect_to dashboard_path if authenticated?
   end
 
   def create
@@ -8,14 +8,14 @@ class SessionController < ApplicationController
 
     if user&.authenticate(params[:password])
       sign_in user
-      return redirect_to dashboard_url
+      return redirect_to dashboard_path
     end
 
-    redirect_back fallback_location: sign_in_url
+    redirect_back fallback_location: sign_in_path
   end
 
   def destroy
     sign_out
-    redirect_to root_url
+    redirect_to root_path
   end
 end
