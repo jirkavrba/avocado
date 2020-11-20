@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :card_collections
+
   before_validation :downcase_username
 
   validates :username, presence: true, uniqueness: true, format: /[a-zA-Z0-9_-]/
