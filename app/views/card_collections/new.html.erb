@@ -1,0 +1,14 @@
+<h1>Create a new card collection</h1>
+
+<%= form_with url: card_collections_path, method: :post do  %>
+  <%= label_tag :title %><br>
+  <%= text_field :card_collection, :title, required: false  %>
+
+  <br>
+  <%= check_box :card_collection, :is_public %>
+  <%= label_tag 'Share this card collection with everybody (make it public)' %><br>
+  <small>(This can be later changed in settings)</small><br>
+
+  <br>
+  <%= submit_tag :Create %>
+<% end %>
