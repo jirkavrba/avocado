@@ -1,0 +1,7 @@
+<h1>Manage cards of <%= @card_collection.title %></h1>
+
+<%= link_to "Add a new card", new_card_collection_card_path(@card_collection) %>
+
+<% @cards.each do |card| %>
+  <%= card %>
+<% end %>

@@ -1,3 +1,3 @@
 class Card < ApplicationRecord
-  belongs_to :collection, class_name: 'CardsCollection'
+  belongs_to :card_collection, primary_key: :collection_id
 end
