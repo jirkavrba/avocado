@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   include AuthenticationHelper
 
   def forbidden
-    render text: 'Forbidden',
-           status: :forbidden
+    render 'errors/403', status: :forbidden
   end
 end

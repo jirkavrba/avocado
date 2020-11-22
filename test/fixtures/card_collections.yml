@@ -1,16 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 public_owned_by_normal_user:
-  user_id: 1
+  user: normal_user
   title: Public collection
   is_public: true
 
 private_owned_by_normal_user:
-  user_id: 1
+  user: normal_user
   title: Private collection
   is_public: false
 
+public_owned_by_admin_user:
+  user: admin_user
+  title: Public collection
+  is_public: true
+
 private_owned_by_admin_user:
-  user_id: 2
+  user: admin_user
   title: Private collection
   is_public: false

@@ -1,0 +1,14 @@
+<h1>Edit collection <%= @card_collection.title %></h1>
+
+<%= form_with model: @card_collection, url: card_collection_path(@card_collection), method: :patch do %>
+  <%= label_tag :title %><br>
+  <%= text_field :card_collection, :title %><br>
+
+  <br>
+  <%= check_box :card_collection, :is_public %>
+  <%= label_tag 'Share this card collection with everybody (make it public)' %><br>
+
+  <br>
+  <%= submit_tag "Save changes" %>
+
+<% end %>

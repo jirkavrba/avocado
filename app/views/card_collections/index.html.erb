@@ -3,5 +3,9 @@
 <% @collections.each do |collection| %>
   <p><%= collection.title || "Untitled collection" %></p>
   <%= link_to "Show", card_collection_path(collection) %>
+  <% if can? :manage, collection %>
+    <%= link_to "Edit", edit_card_collection_path(collection) %>
+    <%= link_to "Delete", card_collection_path(collection), method: :delete, data: { confirm: "Are you sure? This cannot be reverted." } %>
+  <% end %>
   <br>
 <% end %>

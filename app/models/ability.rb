@@ -13,7 +13,7 @@ class Ability
       end
 
       # Users can manage their own collections
-      can :manage, CardCollection, user_id: true
+      can :manage, CardCollection, user_id: user.id
     end
   end
 end
