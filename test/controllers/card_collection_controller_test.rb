@@ -70,5 +70,25 @@ class CardCollectionControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'Anonymous users cannot create collections' do
+    sign_out
+
+    get card_collections_path
+    assert_select 'input', { count: 0, value: 'Create a new card collection' }
+
+    get new_card_collection_path
+    assert_redirected_to sign_in_path
+  end
+
+  test 'Signed in users can create collections' do
+    sign_in_as :normal_user
+
+    get card_collections_path
+    assert_select 'input[value=?]', 'Create a new card collection'
+
+    get new_card_collection_path
+    assert_response :success
+  end
+
   # TODO: test adding cards etc. when implemented
 end

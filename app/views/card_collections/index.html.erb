@@ -1,5 +1,9 @@
 <h1>Collections</h1>
 
+<% if authenticated? %>
+  <%= button_to "Create a new card collection", new_card_collection_path, method: :get %>
+<% end %>
+
 <% @collections.each do |collection| %>
   <p><%= collection.title || "Untitled collection" %></p>
   <%= link_to "Show", card_collection_path(collection) %>

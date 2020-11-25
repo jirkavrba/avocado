@@ -12,7 +12,7 @@ class CardCollection < ApplicationRecord
     elsif user.is_admin
       all
     else
-      user.card_collections + public_collections
+      (user.card_collections + public_collections).uniq
     end
   end
 end
