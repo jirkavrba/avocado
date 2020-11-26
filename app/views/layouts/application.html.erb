@@ -15,7 +15,7 @@
   <script src="https://kit.fontawesome.com/926e679c11.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="<%= cookies[:halfmoon_preferredMode] || "dark-mode" %>">
+<body class="dark-mode">
 
 <div class="page-wrapper with-navbar">
 
@@ -39,15 +39,6 @@
         <%= link_to "Sign in", sign_in_path, class: "btn" %>
         <%= link_to "Sign up", sign_up_path, class: "btn btn-primary" %>
       <% end %>
-
-      <a class="btn" data-turbolinks="false" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i>
-      </a>
-      <script>
-          function toggleDarkMode() {
-              halfmoon.toggleDarkMode();
-          }
-      </script>
     </div>
   </nav>
 
