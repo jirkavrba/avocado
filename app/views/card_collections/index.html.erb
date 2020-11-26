@@ -20,6 +20,10 @@
             <% end %>
           </div>
         </div>
+        <div class="text-muted mx-5 my-10 text-monospace font-size-12">
+          <i class="fas fa-user mr-5"></i>
+          <%= collection.user.username %>
+        </div>
         <%= link_to "Show", card_collection_path(collection), class: "btn" %>
         <% if can? :manage, collection %>
           <%= link_to "Edit", edit_card_collection_path(collection), class: 'btn' %>

@@ -1,5 +1,7 @@
 class SessionController < ApplicationController
   def new
+    breadcrumb "Sign in", sign_in_path
+
     redirect_to dashboard_path if authenticated?
   end
 

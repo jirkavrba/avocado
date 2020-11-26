@@ -1,5 +1,7 @@
 class UserController < ApplicationController
   def new
+    breadcrumb "Sign up", sign_up_path
+
     redirect_to dashboard_url if authenticated?
     @user = User.new
   end

@@ -87,6 +87,8 @@ GEM
     listen (3.3.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    loaf (0.10.0)
+      railties (>= 3.2)
     loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -208,6 +210,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  loaf
   pg (~> 1.2.3)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)

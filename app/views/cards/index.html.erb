@@ -1,6 +1,6 @@
-<h1>Manage cards of <%= @card_collection.title %></h1>
+<h2 class="content-title">Manage cards of <%= @card_collection.title %></h2>
 
-<%= link_to "Add a new card", new_card_collection_card_path(@card_collection) %>
+<%= link_to "Add a new card", new_card_collection_card_path(@card_collection), class: "btn" %>
 
 <% @cards.each do |card| %>
   <%= card %>

@@ -8,11 +8,11 @@ class CardCollection < ApplicationRecord
   # @return [ActiveRecord::Relation<CardCollection>]
   def self.visible_for(user)
     if user.nil? || user.is_banned
-      public_collections.all
+      public_collections
     elsif user.is_admin
       all
     else
-      (user.card_collections + public_collections).uniq
+      where(is_public: true).or(where(user_id: user.id))
     end
   end
 end

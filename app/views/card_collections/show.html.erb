@@ -1,1 +1,5 @@
-<h1><%= @card_collection.title || "Card collection" %></h1>
+<h2 class="content-title"><%= @card_collection.title || "Untitled card collection" %></h2>
+
+<% if can? :manage, @card_collection %>
+  <%= link_to "Manage cards", card_collection_cards_path(@card_collection), class: "btn" %>
+<% end %>

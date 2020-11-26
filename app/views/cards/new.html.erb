@@ -1,17 +1,26 @@
-<h1>Add a new card to collection <%= @card_collection.title %></h1>
+<h2 class="content-title">Add a new card to collection <%= @card_collection.title %></h2>
 
-<%= form_with model: @card, url: card_collection_cards_path(@card_collection), method: :post do %>
-  <%= label_tag :title %><br>
-  <%= text_field :card, :title %><br>
+<div class="card">
+  <div class="card-content">
+    <%= form_with model: @card, url: card_collection_cards_path(@card_collection), method: :post do %>
+      <div class="form-group">
+        <%= label_tag :title %>
+        <%= text_field :card, :title, class: 'form-control' %>
+      </div>
 
-  <br>
-  <%= label_tag :question %><br>
-  <%= text_area :card, :question, cols: 50, rows: 15 %><br>
+      <div class="form-group">
+        <%= label_tag :question %>
+        <%= text_area :card, :question, cols: 50, rows: 15, class: 'form-control' %>
+      </div>
 
-  <br>
-  <%= label_tag :answer %><br>
-  <%= text_area :card, :answer, cols: 50, rows: 15 %><br>
+      <div class="form-group">
+        <%= label_tag :answer %>
+        <%= text_area :card, :answer, cols: 50, rows: 15, class: 'form-control' %>
+      </div>
 
-  <%= submit_tag "Add" %>
+      <%= submit_tag 'Add card and continue adding', class: 'btn btn-success' %>
+      <%= submit_tag 'Add card and return to card collection', class: 'btn', name: 'return' %>
 
-<% end %>
+    <% end %>
+  </div>
+</div>
