@@ -1,14 +1,23 @@
-<h1>Create a new card collection</h1>
+<h1 class="content-title">Create a new card collection</h1>
 
-<%= form_with url: card_collections_path, method: :post do  %>
-  <%= label_tag :title %><br>
-  <%= text_field :card_collection, :title, required: false  %>
+<div class="card mx-0">
+  <%= form_with url: card_collections_path, method: :post do %>
+    <div class="form-group">
+      <%= label_tag :title %>
+      <%= text_field :card_collection, :title, required: false, class: 'form-control' %>
+    </div>
 
-  <br>
-  <%= check_box :card_collection, :is_public %>
-  <%= label_tag 'Share this cards collection with everybody (make it public)' %><br>
-  <small>(This can be later changed in settings)</small><br>
+    <div class="form-group">
+      <div class="custom-checkbox">
+        <%= check_box :card_collection, :is_public %>
+        <%= label_tag :card_collection_is_public, 'Share this cards collection with everybody (make it public)' %><br>
+      </div>
 
-  <br>
-  <%= submit_tag :Create %>
-<% end %>
+      <div class="mt-5">
+        <small class="text-muted">(This can be later changed in settings)</small><br>
+      </div>
+    </div>
+
+    <%= submit_tag 'Create', class: 'btn btn-primary' %>
+  <% end %>
+</div>

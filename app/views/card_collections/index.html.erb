@@ -4,19 +4,19 @@
   <%= button_to "Create a new card collection", new_card_collection_path, method: :get, class: ' btn btn-success' %>
 <% end %>
 
-<div class="row">
+<div class="row mt-20">
   <% @collections.each do |collection| %>
     <div class="col-sm-12 col-md-4">
-      <div class="card mx-5">
-        <div class="card-title d-flex align-items-center">
-          <%= collection.title || "Untitled collection" %>
+      <div class="card mx-0 my-5 mr-10">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="card-title font-size-18">
+            <%= collection.title || "Untitled collection" %>
+          </div>
           <div class="ml-15 text-muted font-size-12">
             <% if collection.is_public %>
-              <i class="fas fa-globe-americas"></i>
-              public
+              <i class="fas fa-globe-americas text-success" title="Public collection"></i>
             <% else %>
-              <i class="fas fa-user-lock"></i>
-              private
+              <i class="fas fa-user-lock text-danger" title="Private collection"></i>
             <% end %>
           </div>
         </div>
