@@ -1,11 +1,26 @@
-<h1>Sign up</h1>
+<div class="row">
+  <div class="col-sm-12 col-md-6 offset-md-3">
+    <div class="content">
+      <h2 class="font-size-24 text-center">Sign up</h2>
 
-<%= form_with(model: @user, url: sign_up_url, method: :post) do %>
-  <%= label_tag :username %><br>
-  <%= text_field :user, :username, required: true %><br>
+      <div class="card">
+        <%= form_with(model: @user, url: sign_up_url, method: :post) do %>
 
-  <%= label_tag :password %><br>
-  <%= password_field :user, :password, required: true %><br>
+          <div class="form-group">
+            <%= label_tag :username %>
+            <%= text_field :user, :username, required: true, class: 'form-control text-monospace' %>
+          </div>
 
-  <%= submit_tag "Sign up" %>
-<% end %>
+          <div class="form-group">
+            <%= label_tag :password %>
+            <%= password_field :user, :password, required: true, class: 'form-control text-monospace' %>
+          </div>
+
+          <div class="d-flex">
+            <%= submit_tag "Sign up", class: 'btn btn-primary ml-auto' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

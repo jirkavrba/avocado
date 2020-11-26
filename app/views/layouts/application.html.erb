@@ -1,22 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Avocado</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Avocado</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <header>
-    <% if authenticated? %>
-      <small>Signed in as <%= current_user.username %></small>
-      <%= button_to "Sign out", sign_out_path, method: :delete %>
-    <% end %>
-  </header>
+  <link rel="icon" type="image/png" href="<%= image_url "favicon.png" %>"/>
 
-  <body>
-    <%= yield %>
-  </body>
+  <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+  <script src="https://kit.fontawesome.com/926e679c11.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="<%= cookies[:halfmoon_preferredMode] || "dark-mode" %>">
+
+<div class="page-wrapper with-navbar">
+
+  <nav class="navbar">
+    <a href="<%= root_path %>" class="navbar-brand">
+      <%= image_tag "avocado.png" %>
+      Avocado app
+    </a>
+
+    <span class="navbar-text text-monospace text-danger">beta</span>
+
+    <div class="form-inline d-none d-md-flex ml-auto">
+      <% if authenticated? %>
+        <!-- This will later point to user profile settings or something -->
+        <%= link_to '#', class: 'btn btn-disabled text-monospace font-size-12' do %>
+          <i class="fas fa-user"></i>
+          <%= current_user.username %>
+        <% end %>
+        <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to "Sign in", sign_in_path, class: "btn" %>
+        <%= link_to "Sign up", sign_up_path, class: "btn btn-primary" %>
+      <% end %>
+
+      <a class="btn" data-turbolinks="false" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+      </a>
+      <script>
+          function toggleDarkMode() {
+              halfmoon.toggleDarkMode();
+          }
+      </script>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    <div class="content">
+      <% unless alert.nil? %>
+        <div class="alert alert-danger text-danger" role="alert">
+          <h4 class="alert-heading font-weight-bold">Error</h4>
+          <%= alert %>
+        </div>
+      <% end %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
 </html>

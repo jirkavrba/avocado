@@ -1,15 +1,31 @@
-<h1>Collections</h1>
+<h2 class="content-title">Card collections</h2>
 
 <% if authenticated? %>
-  <%= button_to "Create a new card collection", new_card_collection_path, method: :get %>
+  <%= button_to "Create a new card collection", new_card_collection_path, method: :get, class: ' btn btn-success' %>
 <% end %>
 
-<% @collections.each do |collection| %>
-  <p><%= collection.title || "Untitled collection" %></p>
-  <%= link_to "Show", card_collection_path(collection) %>
-  <% if can? :manage, collection %>
-    <%= link_to "Edit", edit_card_collection_path(collection) %>
-    <%= link_to "Delete", card_collection_path(collection), method: :delete, data: { confirm: "Are you sure? This cannot be reverted." } %>
+<div class="row">
+  <% @collections.each do |collection| %>
+    <div class="col-sm-12 col-md-4">
+      <div class="card mx-5">
+        <div class="card-title d-flex align-items-center">
+          <%= collection.title || "Untitled collection" %>
+          <div class="ml-15 text-muted font-size-12">
+            <% if collection.is_public %>
+              <i class="fas fa-globe-americas"></i>
+              public
+            <% else %>
+              <i class="fas fa-user-lock"></i>
+              private
+            <% end %>
+          </div>
+        </div>
+        <%= link_to "Show", card_collection_path(collection), class: "btn" %>
+        <% if can? :manage, collection %>
+          <%= link_to "Edit", edit_card_collection_path(collection), class: 'btn' %>
+          <%= link_to "Delete", card_collection_path(collection), method: :delete, data: {confirm: "Are you sure? This cannot be reverted."}, class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-  <br>
-<% end %>
+</div>

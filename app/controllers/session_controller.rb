@@ -11,6 +11,7 @@ class SessionController < ApplicationController
       return redirect_to dashboard_path
     end
 
+    flash[:alert] = "Invalid credentials."
     redirect_back fallback_location: sign_in_path
   end
 
