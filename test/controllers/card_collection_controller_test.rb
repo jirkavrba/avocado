@@ -1,42 +1,42 @@
 require 'test_helper'
 
 class CardCollectionControllerTest < ActionDispatch::IntegrationTest
-  test 'Collections index can be accessed without user session' do
+  test 'collections index can be accessed without user session' do
     sign_out
     get card_collections_path
     assert_response :success
   end
 
-  test 'Anonymous users can see public collections' do
+  test 'anonymous users can see public collections' do
     sign_out
 
     get card_collections_path
-    assert_select 'p', card_collections(:public_owned_by_normal_user).title
+    assert_select '.card-title', card_collections(:public_owned_by_normal_user).title
 
     get card_collection_path(card_collections(:public_owned_by_normal_user))
     assert_response :success
   end
 
-  test 'Anonymous users cannot see private collections' do
+  test 'anonymous users cannot see private collections' do
     sign_out
 
     get card_collections_path
-    assert_select 'p', { count: 0, text: card_collections(:private_owned_by_normal_user).title }
-    assert_select 'p', { count: 0, text: card_collections(:private_owned_by_admin_user).title }
+    assert_select '.card-title', { count: 0, text: card_collections(:private_owned_by_normal_user).title }
+    assert_select '.card-title', { count: 0, text: card_collections(:private_owned_by_admin_user).title }
 
     get card_collection_path(card_collections(:private_owned_by_normal_user))
     assert_response :forbidden
     assert_select 'h1', 'Forbidden'
   end
 
-  test 'Users can see their private collections' do
+  test 'users can see their private collections' do
     sign_in_as :normal_user
 
     get card_collections_path
-    assert_select 'p', { count: 1, text: card_collections(:private_owned_by_normal_user).title }
+    assert_select '.card-title', { count: 1, text: card_collections(:private_owned_by_normal_user).title }
   end
 
-  test 'Anonymous users cannot edit collections' do
+  test 'anonymous users cannot edit collections' do
     sign_out
 
     card_collections.each do |collection|
@@ -45,7 +45,7 @@ class CardCollectionControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'Signed in users can edit their collection' do
+  test 'signed in users can edit their collection' do
     sign_in_as :normal_user
 
     get edit_card_collection_path(card_collections(:public_owned_by_normal_user))
@@ -61,7 +61,7 @@ class CardCollectionControllerTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
-  test 'Admin users can edit any collection' do
+  test 'admin users can edit any collection' do
     sign_in_as :admin_user
 
     card_collections.each do |collection|
@@ -70,7 +70,7 @@ class CardCollectionControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'Anonymous users cannot create collections' do
+  test 'anonymous users cannot create collections' do
     sign_out
 
     get card_collections_path
@@ -80,7 +80,7 @@ class CardCollectionControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to sign_in_path
   end
 
-  test 'Signed in users can create collections' do
+  test 'signed in users can create collections' do
     sign_in_as :normal_user
 
     get card_collections_path
