@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
   # Collections and flashcards
   resources :card_collections do
-    resources :cards, on: :member, except: [:show]
+    resources :cards, except: [:show], on: :member
   end
 end
