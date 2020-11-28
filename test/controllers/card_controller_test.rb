@@ -38,7 +38,12 @@ class CardControllerTest < ActionDispatch::IntegrationTest
   test 'users cannot add cards to other users collections' do
     sign_in_as :normal_user
 
-    post card_collection_cards_path(card_collections(:public_owned_by_admin_user)),
+    card_collection = card_collections(:public_owned_by_admin_user)
+
+    get new_card_collection_card_path(card_collection)
+    assert_response :forbidden
+
+    post card_collection_cards_path(card_collection),
          params: {
            card: {
              title: 'Some title',
@@ -53,6 +58,9 @@ class CardControllerTest < ActionDispatch::IntegrationTest
     sign_in_as :admin_user
 
     card_collection = card_collections(:public_owned_by_normal_user)
+
+    get new_card_collection_card_path(card_collection)
+    assert_response :success
 
     post card_collection_cards_path(card_collection),
          params: {
