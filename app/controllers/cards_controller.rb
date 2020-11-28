@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CardsController < ApplicationController
   before_action :authenticate!
-  before_action :set_card, except: %i[new index show]
+  before_action :set_card, except: [:new, :index]
   before_action :set_card_collection
 
   before_action :set_breadcrumbs
