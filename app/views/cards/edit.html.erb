@@ -1,0 +1,24 @@
+<h2 class="content-title">Add a new card to collection <%= @card_collection.title %></h2>
+
+<div class="card">
+  <div class="card-content">
+    <%= form_with model: @card, url: card_collection_card_path(@card_collection, @card), method: :patch do %>
+      <div class="form-group">
+        <%= label_tag :title %>
+        <%= text_field :card, :title, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :question %>
+        <%= text_area :card, :question, cols: 50, rows: 15, class: 'form-control', style: 'resize: vertical' %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :answer %>
+        <%= text_area :card, :answer, cols: 50, rows: 15, class: 'form-control', style: 'resize: vertical' %>
+      </div>
+
+      <%= submit_tag 'Save changes', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

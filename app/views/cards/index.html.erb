@@ -2,6 +2,20 @@
 
 <%= link_to "Add a new card", new_card_collection_card_path(@card_collection), class: "btn" %>
 
-<% @cards.each do |card| %>
-  <%= card %>
-<% end %>
+<div class="row">
+  <% @cards.each_with_index do |card, i| %>
+    <div class="col-sm-12 col-md-4">
+      <div class="card mx-0 mb-10 mr-10">
+        <div class="float-right text-monospace text-muted"><%= i + 1 %></div>
+        <div class="card-title font-size-14">
+          <%= card.title || "Untitled card" %>
+        </div>
+        <p class="text-muted font-size-12">
+          <%= card.question.truncate(50) %>
+        </p>
+        <%= link_to "Edit", edit_card_collection_card_path(@card_collection, card), class: "btn" %>
+        <%= link_to "Delete", card_collection_card_path(@card_collection, card), method: :delete, class: "btn btn-danger", data: { confirm: "Do you really want to delete this card?" } %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_091517) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.integer "collection_id"
+    t.integer "card_collection_id"
     t.string "title"
     t.text "question"
     t.text "answer"

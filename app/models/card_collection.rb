@@ -1,6 +1,6 @@
 class CardCollection < ApplicationRecord
   belongs_to :user
-  has_many :cards, foreign_key: :collection_id
+  has_many :cards
 
   scope :public_collections, -> { where(is_public: true) }
 
