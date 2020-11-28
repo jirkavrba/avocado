@@ -47,19 +47,9 @@ jobs:
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
 
-    - name: Cache npm packages
-      uses: actions/cache@v2
-      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-
     - name: Install npm dependencies
-      if: steps.yarn-cache.outputs.cache-hit != 'true'
       run: |
-        yarn install
+        yarn install --check-files
 
     - name: Compilation assets with Webpack
       run: NODE_ENV=test bundle exec rails webpacker:compile
