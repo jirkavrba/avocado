@@ -6,16 +6,11 @@ class CardCollectionsController < ApplicationController
 
   rescue_from CanCan::AccessDenied, with: :forbidden
 
-  breadcrumb 'Card collections', -> { card_collections_path }
-  breadcrumb -> { @card_collection.title },
-             -> { card_collection_path(@card_collection) }, except: [:index, :new, :create]
-
   def index
     @collections = CardCollection.visible_for(current_user).preload(:user)
   end
 
   def new
-    breadcrumb 'Create a new card collection', new_card_collection_path(@card_collection)
   end
 
   def create
@@ -29,7 +24,6 @@ class CardCollectionsController < ApplicationController
 
   def edit
     authorize! :manage, @card_collection
-    breadcrumb 'Edit', edit_card_collection_path(@card_collection)
   end
 
   def update

@@ -43,16 +43,6 @@
   </nav>
 
   <div class="content-wrapper">
-    <nav class="bg-dark">
-      <ul class="breadcrumb p-15 pb-10">
-        <% breadcrumb_trail do |crumb| %>
-          <li class="breadcrumb-item <%= crumb.current? ? "active" : "" %>">
-            <%= link_to crumb.name, crumb.url %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
-
     <div class="content">
         <% unless alert.nil? %>
         <div class="alert alert-danger text-danger mb-15" role="alert">

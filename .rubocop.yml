@@ -6,3 +6,6 @@ Style/Documentation:
 
 Style/SymbolArray:
   Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false

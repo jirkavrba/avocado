@@ -3,7 +3,9 @@
 class ApplicationController < ActionController::Base
   include AuthenticationHelper
 
-  breadcrumb 'Dashboard', :dashboard_path
+  rescue_from CanCan::AccessDenied, with: :forbidden
+
+  protected
 
   def forbidden
     render 'errors/403', status: :forbidden
