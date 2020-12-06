@@ -1,53 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Avocado</title>
+  <title>The page you were looking for doesn't exist (404)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+  .rails-default-error-page {
+    background-color: #EFEFEF;
+    color: #2E2F30;
+    text-align: center;
+    font-family: arial, sans-serif;
+    margin: 0;
+  }
 
-  <link rel="stylesheet" media="all" href="/assets/application.debug-31313752660c5a1bd1886a6b30e8d7034078abad01871c6f37aeee6a3d86a917.css" data-turbolinks-track="reload" />
-  <script src="/packs/js/application-9afcbb5693aa87623e69.js" data-turbolinks-track="reload"></script>
+  .rails-default-error-page div.dialog {
+    width: 95%;
+    max-width: 33em;
+    margin: 4em auto 0;
+  }
 
-  <link rel="icon" type="image/png" href="http://localhost:3000/assets/favicon-5d8b95e820b9a70563a098aef999a17aa919b63e1aadd9168b5d89a2fdec3d9c.png"/>
+  .rails-default-error-page div.dialog > div {
+    border: 1px solid #CCC;
+    border-right-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #BBB;
+    border-top: #B00100 solid 4px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    background-color: white;
+    padding: 7px 12% 0;
+    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }
 
-  <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
-  <script src="https://kit.fontawesome.com/926e679c11.js" crossorigin="anonymous"></script>
+  .rails-default-error-page h1 {
+    font-size: 100%;
+    color: #730E15;
+    line-height: 1.5em;
+  }
+
+  .rails-default-error-page div.dialog > p {
+    margin: 0 0 1em;
+    padding: 1em;
+    background-color: #F7F7F7;
+    border: 1px solid #CCC;
+    border-right-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #999;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-color: #DADADA;
+    color: #666;
+    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }
+  </style>
 </head>
 
-<body class="dark-mode">
-
-<div class="page-wrapper with-navbar">
-
-  <nav class="navbar">
-    <a href="/" class="navbar-brand">
-      <img src="/assets/avocado-d4921e633b62d800498826d3d6bdfedc7f850070a3ca636957d5876298329e3e.png" />
-      Avocado
-    </a>
-
-    <span class="navbar-text text-monospace text-danger">dev</span>
-
-    <div class="form-inline d-none d-md-flex ml-auto">
-      <a class="btn" href="/sign_in">Sign in</a>
-      <a class="btn btn-primary" href="/sign_up">Sign up</a>
+<body class="rails-default-error-page">
+  <!-- This file lives in public/404.html -->
+  <div class="dialog">
+    <div>
+      <h1>The page you were looking for doesn't exist.</h1>
+      <p>You may have mistyped the address or the page may have moved.</p>
     </div>
-  </nav>
-
-  <div class="content-wrapper">
-    <div class="content">
-      <div class="container">
-        <div class="text-center">
-          <img src="/assets/404-a7a7c2d3c8813cedc7013ff93efa509800b2702bbc90665a9cb30ba02ac46db7.png" />
-
-          <div class="text-monospace">
-            <div class="font-size-20 text-muted">HTTP 404</div>
-            <h1>Not Found</h1>
-          </div>
-
-          <a class="btn btn-primary" href="/">Return to main page</a>
-        </div>
-
-      </div>
-    </div>
+    <p>If you are the application owner check the logs for more information.</p>
   </div>
-</div>
 </body>
 </html>
