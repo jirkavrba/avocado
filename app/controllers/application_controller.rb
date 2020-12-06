@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   def not_found
     render 'errors/404', status: :not_found
   end
+
+  def internal_server_error
+    render 'errors/500', status: :internal_server_error
+  end
 end
