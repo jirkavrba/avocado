@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
 class CardsController < ApplicationController
-  before_action :authenticate!
+  before_action :authenticate!, unless: -> { request.format.json? }
   before_action :set_card, except: [:new, :index]
   before_action :set_card_collection
 
   def index
     @cards = @card_collection.cards
+
+    respond_to do |format|
+      format.html # Render the template
+      format.json { render json: @cards }
+    end
   end
 
   def new
@@ -39,7 +44,8 @@ class CardsController < ApplicationController
 
   def set_card_collection
     @card_collection = CardCollection.find_by id: params[:card_collection_id]
-    authorize! :manage, @card_collection
+    authorize! :view, @card_collection
+    authorize! :manage, @card_collection unless request.format.json?
   end
 
   def set_card
