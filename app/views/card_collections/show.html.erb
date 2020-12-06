@@ -3,9 +3,12 @@
     <%= @card_collection.title || "Untitled card collection" %>
     <br>
     <span class="text-muted font-size-14">
-    Created <span title="<%= @card_collection.created_at.to_s :long %>">
-    <%= distance_of_time_in_words(Time.now, @card_collection.created_at) %> ago</span>
-    by <span class="text-white"><%= @card_collection.user.username %></span>
+      <%= @card_collection.is_public ? "Public" : "Private" %>
+      collection created by
+      <span class="text-white text-monospace"><%= @card_collection.user.username %></span>
+      <span title="<%= @card_collection.created_at.to_s :long %>">
+      <%= distance_of_time_in_words(Time.now, @card_collection.created_at) %> ago
+    </span>
   </span>
   </h2>
 
