@@ -16,12 +16,9 @@ class CardsController < ApplicationController
   def create
     card = @card_collection.cards.create card_params
 
-    if card.valid?
-      redirect_url = (params.key?(:return) ? card_collection_path(@card_collection) : new_card_collection_card_path(@card_collection))
-      return redirect_to redirect_url
-    else
-      flash[:alert] = card.errors.full_messages.first end
+    return redirect_to return_url if card.valid?
 
+    flash[:alert] = card.errors.full_messages.first
     redirect_to new_card_collection_card_path(@card_collection)
   end
 
@@ -51,5 +48,13 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:title, :question, :answer)
+  end
+
+  def return_url
+    if params.key?(:return)
+      card_collection_path(@card_collection)
+    else
+      new_card_collection_card_path(@card_collection)
+    end
   end
 end
