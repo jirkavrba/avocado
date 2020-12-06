@@ -4,7 +4,7 @@ class CardCollectionsController < ApplicationController
   before_action :authenticate!, except: [:index, :show]
   before_action :set_card_collection, except: :index
 
-  rescue_from CanCan::AccessDenied, with: :forbidden
+  rescue_from CanCan::AccessDenied, with: :not_found_or_forbidden
 
   def index
     @collections = CardCollection.visible_for(current_user).preload(:user)
@@ -48,5 +48,9 @@ class CardCollectionsController < ApplicationController
 
   def set_card_collection
     @card_collection = CardCollection.find_by id: params[:id]
+  end
+
+  def not_found_or_forbidden
+    @card_collection.nil? ? not_found : forbidden
   end
 end

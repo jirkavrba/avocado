@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def forbidden
     render 'errors/403', status: :forbidden
   end
+
+  def not_found
+    render 'errors/404', status: :not_found
+  end
 end

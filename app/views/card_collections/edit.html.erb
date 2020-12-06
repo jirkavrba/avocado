@@ -21,3 +21,11 @@
     <%= submit_tag 'Save changes', class: 'btn btn-primary' %>
   <% end %>
 </div>
+
+<div class="float-right">
+  <%= button_to 'Delete this collection', card_collection_path(@card_collection),
+                method: :delete,
+                class: 'btn btn-danger',
+                data: { confirm: 'Are you sure? This action is irreversible!' }
+  %>
+</div>

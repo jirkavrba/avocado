@@ -90,5 +90,27 @@ class CardCollectionControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # TODO: test adding cards etc. when implemented
+  test 'anonymous users cannot delete collections' do
+    sign_out
+
+    delete card_collection_path(card_collections(:public_owned_by_normal_user))
+    assert_redirected_to sign_in_path
+  end
+
+  test 'signed in users can delete their collections' do
+    sign_in_as :normal_user
+
+    delete card_collection_path(card_collections(:public_owned_by_normal_user))
+    assert_redirected_to card_collections_path
+
+    get card_collection_path(card_collections(:public_owned_by_normal_user))
+    assert_response :not_found
+  end
+
+  test 'signed in users cannot delete collections of other users' do
+    sign_in_as :normal_user
+
+    delete card_collection_path(card_collections(:public_owned_by_admin_user))
+    assert_response :forbidden
+  end
 end

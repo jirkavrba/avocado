@@ -1,7 +1,10 @@
 <h2 class="content-title">
   <%= @card_collection.title || "Untitled card collection" %>
-  <span class="ml-20 text-muted font-size-14">
-    created by <span class="text-monospace"><%= @card_collection.user.username %></span> on <%= @card_collection.created_at.to_s :long %>
+  <br>
+  <span class="text-muted font-size-14">
+    Created <span title="<%= @card_collection.created_at.to_s :long %>">
+    <%= distance_of_time_in_words(Time.now, @card_collection.created_at) %> ago</span>
+    by <span class="text-white"><%= @card_collection.user.username %></span>
   </span>
 </h2>
 
