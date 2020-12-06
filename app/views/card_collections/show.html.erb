@@ -21,8 +21,13 @@
 </div>
 
 
+<div id="viewer_container">
+  {{ 1 + 1 }}
+</div>
+
 <script>
-  const cards_path = "<%= card_collection_cards_url(@card_collection, format: :json) %>";
-  // TODO: Implement the actual cards viewer
+  window.__card_path = "<%= card_collection_cards_url(@card_collection, format: :json) %>";
 </script>
+
+<%= javascript_pack_tag 'card_collection_viewer' %>
 
