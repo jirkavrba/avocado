@@ -1,5 +1,11 @@
-<h2 class="content-title"><%= @card_collection.title || "Untitled card collection" %></h2>
+<h2 class="content-title">
+  <%= @card_collection.title || "Untitled card collection" %>
+  <span class="ml-20 text-muted font-size-14">
+    created by <span class="text-monospace"><%= @card_collection.user.username %></span> on <%= @card_collection.created_at.to_s :long %>
+  </span>
+</h2>
 
 <% if can? :manage, @card_collection %>
+  <%= link_to "Edit", edit_card_collection_path(@card_collection), class: "btn" %>
   <%= link_to "Manage cards", card_collection_cards_path(@card_collection), class: "btn" %>
 <% end %>
