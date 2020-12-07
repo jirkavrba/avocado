@@ -10,7 +10,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       format.html # Render the template
-      format.json { render json: @cards }
+      format.json { render json: @cards.shuffle }
     end
   end
 
