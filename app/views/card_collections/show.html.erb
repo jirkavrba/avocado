@@ -20,14 +20,36 @@
   </div>
 </div>
 
-
-<div id="viewer_container">
-  {{ 1 + 1 }}
+<div id="viewer__container">JavaScript is required in order to use this application</div>
+<div id="viewer__template" style="display: none">
+  <div>
+    <div class="card mx-0">
+      <div class="clearfix">
+        <div class="float-right">
+          <div class="btn" @click="previousCard"><i class="fas fa-arrow-left"></i></div>
+          <div class="btn btn-primary" style="width: 4em" @click="toggleReveal">
+            <i class="fas fa-eye-slash" v-if="revealed"></i>
+            <i class="fas fa-eye" v-else></i>
+          </div>
+          <div class="btn" @click="nextCard"><i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="card-title">{{ card.title }}</div>
+      </div>
+      <div v-if="this.loaded">
+        <div class="text-muted font-size-12">Card {{ current + 1 }} of {{ cards.length }}</div>
+        <div class="content mx-0 font-size-24 text-center">
+          {{ revealed ? card.answer : card.question }}
+        </div>
+      </div>
+      <div v-else>
+        <div class="progress mt-10">
+          <div class="progress-bar progress-bar-animated bg-dark" role="progressbar" style="width: 100%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<script>
-  window.__card_path = "<%= card_collection_cards_url(@card_collection, format: :json) %>";
-</script>
-
+<script>window.__cards_url = "<%= card_collection_cards_url(@card_collection, format: :json) %>";</script>
 <%= javascript_pack_tag 'card_collection_viewer' %>
 
