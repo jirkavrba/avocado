@@ -37,7 +37,7 @@
       </div>
       <div v-if="this.loaded">
         <div class="text-muted font-size-12">Card {{ current + 1 }} of {{ cards.length }}</div>
-        <div class="content mx-0 font-size-24 text-center">
+        <div class="content mx-0 font-size-24 text-center" id="viewer__text">
           {{ revealed ? card.answer : card.question }}
         </div>
       </div>
@@ -50,6 +50,8 @@
   </div>
 </div>
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>window.__cards_url = "<%= card_collection_cards_url(@card_collection, format: :json) %>";</script>
 <%= javascript_pack_tag 'card_collection_viewer' %>
 

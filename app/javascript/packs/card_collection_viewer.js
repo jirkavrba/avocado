@@ -27,14 +27,17 @@ new Vue({
     mounted: async function () {
         this.cards = await fetch(window.__cards_url).then(response => response.json());
         this.loaded = true;
+        this._renderLatex();
     },
     methods: {
         toggleReveal: function () {
             this.revealed = !this.revealed;
+            this._renderLatex();
         },
         nextCard: function () {
             this.current = (this.current + 1) % this.cards.length;
             this.revealed = false;
+            this._renderLatex();
         },
         previousCard: function () {
             this.current--;
@@ -43,6 +46,16 @@ new Vue({
             }
 
             this.revealed = false;
+
+            this._renderLatex();
+        },
+        _renderLatex: function () {
+            if (typeof window.MathJax !== 'undefined') {
+                // Remove all previous renders
+                Array.from(document.getElementsByClassName("MathJax")).forEach(element => element.remove());
+                setTimeout(window.MathJax.typeset, 50);
+            }
         }
     }
-});
+})
+;
