@@ -1,5 +1,6 @@
 class CardCollection < ApplicationRecord
   belongs_to :user
+  belongs_to :subject
   has_many :cards
 
   scope :public_collections, -> { where(is_public: true) }

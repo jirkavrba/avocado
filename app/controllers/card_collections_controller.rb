@@ -7,10 +7,11 @@ class CardCollectionsController < ApplicationController
   rescue_from CanCan::AccessDenied, with: :not_found_or_forbidden
 
   def index
-    @collections = CardCollection.visible_for(current_user).preload(:user)
+    @collections = CardCollection.visible_for(current_user).preload(:user, :subject)
   end
 
   def new
+    @subjects = Subject.all
   end
 
   def create
@@ -24,6 +25,7 @@ class CardCollectionsController < ApplicationController
 
   def edit
     authorize! :manage, @card_collection
+    @subjects = Subject.all
   end
 
   def update
@@ -43,11 +45,11 @@ class CardCollectionsController < ApplicationController
   private
 
   def card_collection_params
-    params.require(:card_collection).permit(:title, :is_public)
+    params.require(:card_collection).permit(:title, :is_public, :subject_id)
   end
 
   def set_card_collection
-    @card_collection = CardCollection.find_by id: params[:id]
+    @card_collection = CardCollection.find_by(id: params[:id])
   end
 
   def not_found_or_forbidden

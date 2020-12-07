@@ -8,6 +8,12 @@
     </div>
 
     <div class="form-group">
+      <%= label_tag :subject %>
+      <%= select :card_collection, :subject_id, options_from_collection_for_select(@subjects, 'id', 'title'),
+                 { include_blank: "None" }, { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
       <div class="custom-checkbox">
         <%= check_box :card_collection, :is_public %>
         <%= label_tag :card_collection_is_public, 'Share this cards collection with everybody (make it public)' %><br>

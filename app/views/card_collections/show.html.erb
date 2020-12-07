@@ -9,6 +9,12 @@
       <span title="<%= @card_collection.created_at.to_s :long %>">
       <%= distance_of_time_in_words(Time.now, @card_collection.created_at) %> ago
     </span>
+    <% unless @card_collection.subject.nil? %>
+      <br>
+      <div class="badge badge-pill">
+        <span class="text-monospace"><%= @card_collection.subject.code %></span> | <%= @card_collection.subject.title %>
+      </div>
+    <% end %>
   </span>
   </h2>
 
