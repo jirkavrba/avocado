@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/sign_up', to: 'user#new'
   post '/sign_up', to: 'user#create'
 
+  # Subjects
+  resources :subjects
+
   # Collections and flashcards
   resources :card_collections do
     resources :cards, except: [:show], on: :member

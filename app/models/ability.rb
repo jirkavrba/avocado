@@ -5,6 +5,7 @@ class Ability
 
   def initialize(user)
     can :view, CardCollection, is_public: true
+    can :view, Subject
 
     if user.present?
       if user.is_admin

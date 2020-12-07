@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+matematika_pro_informatiky:
+  code: 4MM106
+  title: 'Matematika pro informatiky'
+
+zaklady_odborne_prace:
+  code: 4SA111
+  title: 'Základy odborné práce'

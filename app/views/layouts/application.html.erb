@@ -30,8 +30,8 @@
     <div class="form-inline d-none d-md-flex ml-auto">
       <% if authenticated? %>
         <!-- This will later point to user profile settings or something -->
-        <%= link_to '#', class: 'btn btn-disabled text-monospace font-size-12' do %>
-          <i class="fas fa-user <%= current_user.is_admin ? 'text-danger' : '' %>"></i>
+        <%= link_to '#', class: 'btn btn-disabled text-monospace font-size-12 ' + (current_user.is_admin ? 'text-danger' : '') do %>
+          <i class="fas fa-user"></i>
           <%= current_user.username %>
         <% end %>
         <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'btn btn-primary' %>

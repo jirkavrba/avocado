@@ -1,0 +1,24 @@
+<h2 class="content-title">Subjects</h2>
+
+<% if can? :manage, :subjects %>
+  <%= link_to "Add a new subject", new_subject_path, class: ' btn btn-success' %>
+<% end %>
+
+<div class="row mt-20">
+  <% @subjects.each do |subject| %>
+    <div class="col-sm-12 col-md-4">
+      <div class="card mx-0 my-5 mr-10">
+        <div class="d-flex justify-content-between align-items-center mb-10">
+          <div class="card-title">
+            <div class="text-monospace text-muted font-size-16"><%= subject.code %></div>
+            <%= subject.title %>
+          </div>
+        </div>
+        <% if can? :manage, subject %>
+          <%= link_to "Edit", edit_subject_path(subject), class: 'btn' %>
+          <%= link_to "Delete", subject_path(subject), method: :delete, data: {confirm: "Are you sure? This cannot be reverted."}, class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
