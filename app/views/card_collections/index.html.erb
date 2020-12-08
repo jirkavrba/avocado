@@ -21,9 +21,9 @@
           </div>
         </div>
         <% unless collection.subject.nil? %>
-          <div class="text-muted mx-5 my-10 text-monospace font-size-12">
+          <div class="text-muted mx-5 my-10 font-size-12">
             <i class="fas fa-graduation-cap mr-5"></i>
-            <div class="badge badge-pill" title="<%= collection.subject.title %>">
+            <div class="badge badge-pill" data-toggle="tooltip" data-title="<%= collection.subject.title %>" data-placement="bottom">
               <%= collection.subject.code %>
             </div>
           </div>
